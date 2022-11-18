@@ -2,13 +2,14 @@
   "name": "vue3-stm",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "perttier": "prettier --write ",
     "prepare": "husky install",
-    "commit": "cz"
+    "commit": "cz",
+    "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
@@ -22,7 +23,11 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^7.9.0",
+    "lint-staged": "^13.0.3",
+    "node-sass": "^8.0.0",
     "prettier": "^2.7.1",
+    "sass": "^1.56.1",
+    "sass-loader": "^13.2.0",
     "unplugin-element-plus": "^0.4.1",
     "unplugin-vue-define-options": "^0.12.7",
     "vite": "^3.0.7",
