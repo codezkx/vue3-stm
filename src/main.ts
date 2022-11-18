@@ -3,7 +3,7 @@ import { globalRegister } from '@/global/index'
 import router from './router'
 import App from './App.vue'
 import install from '@/plugin/common'
-import './assets/style'
+import './assets/style/index.scss'
 
 const app = createApp(App)
 
