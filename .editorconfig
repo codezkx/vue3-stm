@@ -1,0 +1,18 @@
+# Editor configuration, see http://editorconfig.org
+
+# 表示是最顶层的EditroConfig 配置文件 控制不同编辑器的代码风格
+root = true
+
+[*] # 表示所有文件适用
+charset = utf-8 # 设置文件字符集为utf-8
+
+# 如果indent_style 的值为 tab，缩进的长度优先取tab_width设置的值, 如果没有tab_width， 则取indent_size的值，如果值为 space，缩进的长度优先取indent_size的值，如果没有indent_size，则取tab_width的值。
+indent_style = space # 缩进风格 (tab | space)
+indent_size = 2 # 缩进大小
+end_of_line = lf # 控制换行类型（lf | cr | crls）,lf 适配 mac,linix ; cr 适配window;
+trim_trailing_whitespace = true # 去除行首的任意空白字符
+insert_final_newline = true # 始终在文件末尾掺入一个新行
+
+[*.md] # 表示仅md 文件使用一下规则
+max_line_length = off
+trim_trailing_whitespace = false

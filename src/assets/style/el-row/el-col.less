@@ -1,0 +1,21 @@
+@spanNum: 24;
+@span: '';
+@span24: 24;
+
+.loop (@counter) when (@counter > 0) {
+    .el-col-@{counter} {
+      max-width: (@counter / @span24) * 100%;
+      flex: (@counter / @span24) * 100%;
+    }
+    .loop(@counter - 1)
+}
+
+.el-row {
+  .loop(@spanNum)
+}
+
+.el-col {
+    // border-radius: 4px;
+}
+
+
