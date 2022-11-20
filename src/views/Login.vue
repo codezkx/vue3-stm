@@ -1,18 +1,19 @@
 <template>
-  <el-row class="hg100">
-		<el-col
-			class="left-bg el-login-left"
-			:span="12">
-			<LoginleftInformation />
-		</el-col>
-		<el-col
-			class="right-bg el-login-right flex justify-center"
-			:span="12">
-			<Authorization
-				title="Log in to"/>
-		</el-col>
-  </el-row>
-
+  <div class="hg100">
+    <el-row class="hg100">
+      <el-col
+        class="login-left-block"
+        :span="12">
+        <LoginleftInformation />
+      </el-col>
+      <el-col
+        class="login-right-block flex-center align-center"
+        :span="12">
+        <Authorization
+          title="Log in to"/>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -23,16 +24,16 @@
 <style lang="less" scoped>
 @FFF: '#FFF';
 
-.left-bg{
+.login-left-block{
   background-color: #282C34DE;
 }
 
-.right-bg {
+.login-right-block {
   background-color: #FFF;
 }
 
 .hg100 {
-  height: 100vw;
+  height: 100%;
 }
 
 .az-login-left {

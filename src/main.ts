@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+// element UI导入
 import { globalRegister } from '@/global/index'
 import router from './router'
 import App from './App.vue'
@@ -9,8 +10,7 @@ const app = createApp(App)
 
 install(app)
 
-app.use()
-app.use(router)
 app.use(globalRegister)
+app.use(router)
 
 app.mount('#app')

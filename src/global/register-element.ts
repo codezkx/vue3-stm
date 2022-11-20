@@ -1,6 +1,5 @@
 import { App } from "vue";
-import 'element-plus/theme-chalk/base.css'
-
+import 'element-plus/theme-chalk/index.css'
 import {
     ElAside,
     ElAvatar,
@@ -22,10 +21,9 @@ import {
     ElMenuItemGroup,
     ElOption,
     ElRadio,
-    ElRow,
-    ElCol,
+    // ElRow,
+    // ElCol,
     ElSelect,
-    ElSubmenu,
     ElTabPane,
     ElTabs
 } from 'element-plus'
@@ -47,13 +45,12 @@ const components = [
     ElMenu,
     ElMenuItem,
     ElMenuItemGroup,
-    ElSubmenu,
     ElDropdown,
     ElDropdownMenu,
     ElDropdownItem,
     ElAvatar,
-    ElCol,
-    ElRow,
+    // ElCol,
+    // ElRow,
     ElSelect,
     ElOption,
     ElDatePicker

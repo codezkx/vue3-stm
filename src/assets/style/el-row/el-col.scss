@@ -1,21 +1,24 @@
-@spanNum: 24;
-@span: '';
-@span24: 24;
+.flex {
+  display: flex;
 
-.loop (@counter) when (@counter > 0) {
-    .el-col-@{counter} {
-      max-width: (@counter / @span24) * 100%;
-      flex: (@counter / @span24) * 100%;
-    }
-    .loop(@counter - 1)
 }
 
 .el-row {
-  .loop(@spanNum)
+  @extend .flex;
+  position: relative;
+  box-sizing: border-box;
 }
 
-.el-col {
-    // border-radius: 4px;
+// 属性选择器 *：所有位置 ^：开头位置 $：结尾位置
+[class*=el-col-] {
+  box-sizing: border-box;
+}
+
+@for $i from 0 through 24 {
+  .el-col-#{$i} {
+    max-width: ($i / 24) * 100%;
+    flex: ($i / 24) * 100%;
+  }
 }
 
 

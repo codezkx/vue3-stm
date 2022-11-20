@@ -1,0 +1,81 @@
+html,
+body,
+#app {
+  height: 100%;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Noto Sans KR",sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+* {
+  font-family: "PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif";
+}
+
+/*
+  @description: padding 是以2的倍数循环
+  @example
+    如padding： 2px !important;  padding-top： 2px !important;
+ */
+@for $i from 0 through 26 {
+  $count: $i * 2;
+  .pd#{$count} {
+    padding: #{$count}px !important;
+  }
+
+  .pdT#{$count} {
+    padding-top: #{$count}px !important;
+  }
+
+  .pdR#{$count} {
+    padding-right: #{$count}px !important;
+  }
+
+  .pdB#{$count} {
+    padding-bottom: #{$count}px !important;
+  }
+
+  .pdL#{$count} {
+    padding-left: #{$count}px !important;
+  }
+}
+
+/*
+  @description: margin 是以2的倍数循环
+  @example
+    如margin： 2px !important;  margin-top： 2px !important;
+ */
+@for $i from 0 through 26 {
+  $count: $i * 2;
+  .mg#{$count} {
+    margin: #{$count}px !important;
+  }
+
+  .maT#{$count} {
+    margin-top: #{$count}px !important;
+  }
+
+  .maR#{$count} {
+    margin-right: #{$count}px !important;
+  }
+
+  .maT#{$count} {
+    margin-bottom: #{$count}px !important;
+  }
+
+  .maT#{$count} {
+    margin-left: #{$count}px !important;
+  }
+}
+
+
+
