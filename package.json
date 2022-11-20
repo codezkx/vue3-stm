@@ -23,7 +23,6 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^7.9.0",
-    "husky": "^8.0.2",
     "lint-staged": "^13.0.3",
     "node-sass": "^8.0.0",
     "prettier": "^2.7.1",
