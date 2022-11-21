@@ -65,7 +65,7 @@
     }
   });
 
-  const isActive = ref<String>('');
+  const isActive = ref<String>('pass');
 
   const onTab = (tabType: string) => {
     isActive.value = tabType;
@@ -78,11 +78,26 @@
   });
 
   const validateUserName = (rule: any, value: string, cb: Function) => {
-
+    if (!value) {
+      return cb(new Error('This field is required'))
+    }
+    const reg = /^[a-zA-Z]([0-9a-zA-Z]{3,11})$/
+    console.log(value)
+    if (!reg.test(value)) {
+      return cb(new Error('Please enter 3 to 11 characters'))
+    }
+    cb()
   };
 
   const validatepassword = (rule: any, value: string, cb: Function) => {
-
+    if (!value) {
+      return cb(new Error('This field is required'))
+    }
+    const reg = /^[a-zA-Z]\w{6,12}/g
+    if (!reg.test(value)) {
+      return cb(new Error('Please enter 6 to 12 characters'))
+    }
+    cb()
   };
 
   const rules = reactive({
@@ -93,12 +108,11 @@
   const rememberm = ref<Boolean>(false);
 
   const useRemember = () => {
-    console.log(getCookie('name'),  `getCookie(name)`)
-    console.log(getCookie(['name', 'protect']),  `getCookie(['name', 'protect']`)
     if (rememberm.value) {
       const userInfo = {
-        name: accountForm.userName,
-        protect:  accountForm.password
+        userName: accountForm.userName,
+        password:  accountForm.password,
+        rememberm: rememberm.value,
       }
       setCookie(userInfo, 7)
     }

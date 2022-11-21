@@ -1,4 +1,3 @@
-import { map } from 'lodash-unified';
 import type { CookieObjOption } from './types'
 /*
   cookieObj: 设置cookie键值对
@@ -20,7 +19,7 @@ export const setCookie = (cookieObj: CookieObjOption, expireDate: number) => {
     }
 };
 
-/* 
+/*
   key: 设置cookie的key值
   @discription
     获取设置的设置cookie value值
@@ -36,8 +35,8 @@ export const getCookie = (key: string | Array<string | number>): any => {
   if (cookieStr) {
     const cookieList = cookieStr.split(';');
     const twoDimension = cookieList.map(item => {
-      item = item.trim().split('=');
-      return item;
+      const items = item.trim().split('=');
+      return items;
     })
     const cookieObj = Object.fromEntries(twoDimension);
     let cookieV: unknown;

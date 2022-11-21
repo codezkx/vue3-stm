@@ -1,23 +1,17 @@
+import { App } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
 import { createRouter, createWebHashHistory } from 'vue-router'
+import routes from './routes'
 
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    redirect: '/login'
-  },
-  {
-    name: 'login',
-    path: '/login',
-    component: () => import('@/views/Login.vue'),
-    meta: {}
-  }
-]
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
 
-export default router
+export const setupRouter = (app: App) => {
+  app.use(router)
+}
+
+export { router }
 
