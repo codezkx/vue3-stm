@@ -56,6 +56,7 @@
 <script lang="ts" setup>
   import { ref, reactive, computed } from 'vue';
   import type { FormInstance } from 'element-plus';
+  import { setCookie, getCookie } from '@/utils/cookie'
 
   const props = defineProps({
     title: {
@@ -70,7 +71,6 @@
     isActive.value = tabType;
   };
   const accountRef = ref<FormInstance>();
-  console.log(accountRef, 'accountRef');
 
   const accountForm = reactive({
     userName: '',
@@ -90,15 +90,29 @@
     password: [{ validator: validatepassword, trigger: 'blur' }],
   });
 
-  const submitForm = (fromRef: FormInstance | undefined) => {
+  const rememberm = ref<Boolean>(false);
 
+  const useRemember = () => {
+    console.log(getCookie('name'),  `getCookie(name)`)
+    console.log(getCookie(['name', 'protect']),  `getCookie(['name', 'protect']`)
+    if (rememberm.value) {
+      const userInfo = {
+        name: accountForm.userName,
+        protect:  accountForm.password
+      }
+      setCookie(userInfo, 7)
+    }
+  }
+
+  const submitForm = (fromRef: FormInstance | undefined) => {
+    useRemember()
   };
 
   const resetForm = (fromRef: FormInstance | undefined) => {
 
   };
 
-  const rememberm = ref<Boolean>(false);
+
 
 </script>
 
