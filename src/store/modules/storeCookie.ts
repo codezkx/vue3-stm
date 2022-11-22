@@ -17,6 +17,6 @@ export const useMultipleCookieStore = defineStore({
 
   },
   actions: {
-
+    
   }
 })
