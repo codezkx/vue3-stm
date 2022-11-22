@@ -1,34 +1,34 @@
-import type { App, RouteLocationNormalized } from 'vue'
-import type { RouteRecordRaw } from 'vue-router'
-import { createRouter, createWebHashHistory } from 'vue-router'
-import routes from './routes'
-import { useMultipleCookieStore } from 'pinia'
-import { getCookie } from '@/utils/cookie'
-  
+import type { App } from 'vue';
+import type {  RouteLocationNormalized } from 'vue-router';
+import type { RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
+import routes from './routes';
+import { useMultipleCookieStore } from '@/store/modules/storeCookie';
+import { getCookie } from '@/utils/cookie';
+
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes
-})
+});
 
 // 全局守卫
 router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized) => {
-  console.log(to, 'to')
-  console.log(from, 'from')
-  hasCookie()
+  hasCookie();
   // return false
-})
+});
 
-const hasCookie = () => {
-  const cookieMap = getCookie(['userName', 'password', 'rememberm'])
+//
+const hasCookie = (): void => {
+  const cookieMap: Map<string, string> = getCookie(['userName', 'password', 'rememberm']);
   if (cookieMap) {
-
-  }
-}
+    const cookieO = useMultipleCookieStore();
+    cookieO.updateCookie(cookieMap)
+  };
+};
 
 export const setupRouter = (app: App) => {
-  app.use(router)
-}
-
-export { router }
+  app.use(router);
+};
+export { router };
 

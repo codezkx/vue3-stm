@@ -35,7 +35,10 @@
       </el-form-item>
     </el-form>
     <div>
-      <el-checkbox v-model="rememberm">记住密码</el-checkbox>
+      <el-checkbox
+        v-model="rememberm"
+        true-label="1"
+        false-label="0">记住密码</el-checkbox>
     </div>
     <div class="flex-center">
       <el-button
@@ -54,9 +57,11 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, reactive, computed } from 'vue';
+  import { ref, reactive, computed, onMounted } from 'vue';
   import type { FormInstance } from 'element-plus';
-  import { setCookie, getCookie } from '@/utils/cookie'
+  import { store } from '@/store'
+  import { useMultipleCookieStore } from '@/store/modules/storeCookie'
+  import { setCookie, getCookie, clearCookie } from '@/utils/cookie'
 
   const props = defineProps({
     title: {
@@ -76,6 +81,12 @@
     userName: '',
     password: '',
   });
+
+  const rememberm = ref<String>('0');
+
+  onMounted(() => {
+    getCookie()
+  })
 
   const validateUserName = (rule: any, value: string, cb: Function) => {
     if (!value) {
@@ -105,17 +116,27 @@
     password: [{ validator: validatepassword, trigger: 'blur' }],
   });
 
-  const rememberm = ref<Boolean>(false);
+  const getCookie = () => {
+    // 先判断之前用户是否勾选记住密码
+    const { cookieInfo } = useMultipleCookieStore(store)
+    console.log(cookieInfo, 'cookieInfo')
+    if (cookieInfo) {
+      rememberm.value = cookieInfo.rememberm
+      accountForm.userName = cookieInfo.userName
+      accountForm.password = cookieInfo.password
+    }
+  }
 
   const useRemember = () => {
-    if (rememberm.value) {
+    if (Number(rememberm.value)) {
       const userInfo = {
         userName: accountForm.userName,
         password:  accountForm.password,
         rememberm: rememberm.value,
       }
-      setCookie(userInfo, 7)
+      return setCookie(userInfo, 7)
     }
+    clearCookie('userName', 'password', 'rememberm')
   }
 
   const submitForm = (fromRef: FormInstance | undefined) => {
