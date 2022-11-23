@@ -1,6 +1,6 @@
 <template>
   <div class="vou-login-heder">
-    <div class="vou-pointer vou-user-none pdB12 flex-center">
+    <div class="vou-pointer vou-user-none pdB12 justify-center">
       <span
         :class="{active: isActive === 'pass' }"
         @click="onTab('pass')">密码登录</span>
@@ -34,25 +34,37 @@
         </el-input>
       </el-form-item>
     </el-form>
-    <div>
+    <div class="flex-center jb-space-between vou-pointer">
       <el-checkbox
         v-model="rememberm"
         true-label="1"
         false-label="0">记住密码</el-checkbox>
+      <span @click="resetPass" class="vou-reset-text">忘记密码?</span>
     </div>
-    <div class="flex-center">
+    <div class="justify-center pdB24">
       <el-button
-          type="primary"
-          @click="submitForm(accountRef)"
-          >
-          登录
-        </el-button>
-      <el-button
-        @click="resetForm(accountRef)">注册</el-button>
-    </div>
+        class="wh100"
+        type="primary"
+        @click="submitForm(accountRef)"
+        >
+        登录
+      </el-button>
     </div>
     <!-- 第三方账号登录 -->
+    <div class="flex">
+      <el-button
+        class="wh50"
+        @click="resetForm(accountRef)">手机登录</el-button>
+      <el-button
+        class="wh50"
+        @click="resetForm(accountRef)">二维码登录</el-button>
+      <el-button
+        class="wh50"
+        @click="resetForm(accountRef)">注册</el-button>
+    </div>
     <div>
+
+    </div>
   </div>
 </template>
 
@@ -116,6 +128,15 @@
     password: [{ validator: validatepassword, trigger: 'blur' }],
   });
 
+
+  const submitForm = (fromRef: FormInstance | undefined) => {
+    useRemember()
+  };
+
+  const resetForm = (fromRef: FormInstance | undefined) => {
+
+  };
+
   const getCookie = () => {
     // 先判断之前用户是否勾选记住密码
     const { cookieInfo } = useMultipleCookieStore(store)
@@ -139,22 +160,16 @@
     clearCookie('userName', 'password', 'rememberm')
   }
 
-  const submitForm = (fromRef: FormInstance | undefined) => {
-    useRemember()
-  };
+  const resetPass = () => {
 
-  const resetForm = (fromRef: FormInstance | undefined) => {
-
-  };
-
-
+  }
 
 </script>
 
 <style lang="scss">
   .vou-login-heder {
     position: relative;
-    width: 40%;
+    width: 50%;
     min-height: 200px;
     max-height: 260px;
     padding: 24px;
@@ -172,5 +187,11 @@
 
   .active {
     color: var(--vou-click-font-color)
+  }
+
+  .vou-reset-text {
+    user-select: none;
+    font-size: 14px;
+    color: var(--vou-click-font-color);
   }
 </style>

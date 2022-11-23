@@ -7,7 +7,7 @@
         <LoginleftInformation />
       </el-col>
       <el-col
-        class="login-right-block flex-center align-center"
+        class="login-right-block justify-center direction-center"
         :span="12">
         <Authorization
           title="Log in to"/>

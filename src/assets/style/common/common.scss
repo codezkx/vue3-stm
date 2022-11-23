@@ -11,16 +11,25 @@
   display: flex;
 }
 
+ .jb-space-between {
+  justify-content: space-between;
+ }
+
 .flex-center {
+  @extend .flex;
+  align-items: center;
+ }
+
+ .justify-center {
   @extend .flex;
   justify-content: center;
  }
 
- .align-center {
+.direction-center {
   @extend .flex;
   flex-direction: column;
   align-items: center;
- }
+}
 
  .bdR-4 {
   border-radius: 4px;
