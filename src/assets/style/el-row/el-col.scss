@@ -1,3 +1,4 @@
+@use 'sass:math';
 .flex {
   display: flex;
 
@@ -15,9 +16,11 @@
 }
 
 @for $i from 0 through 24 {
+  $percentage: (math.div($i, 24) * 100%);
+
   .el-col-#{$i} {
-    max-width: ($i / 24) * 100%;
-    flex: ($i / 24) * 100%;
+    max-width: $percentage;
+    flex: $percentage;
   }
 }
 

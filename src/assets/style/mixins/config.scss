@@ -1,0 +1,7 @@
+// !default 表示变量被赋值后再对其赋值也是原先的值。如 $i: 1 !default; $i: 2;  输出：1。定义文件中
+// !default 表示覆盖引入的scss文件中$namespace变量的默认值    !default在
+$namespace: 'vou' !default;
+$common-separator: '-' !default;
+$modifier-seprator: '--' !default;
+$element-separator: '__' !default;
+$state-prefix: 'is-' !default;
