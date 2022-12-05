@@ -1,1 +1,54 @@
 @use  'config' as *;
+
+// BEM b($block) --> vou-divider
+@mixin b($block) {
+  $B: $namespace + '-' + $block !global; // global 提升全局
+
+  .#{$B} {
+    @content;
+  }
+}
+
+// e(text, but) -> .vou-divider__text, .vou-divider__but
+@mixin e($element) {
+  $E: $element !global;
+  $selector: &;
+  $currentSelector: '';
+
+  @each $unit in $element {
+    $currentSelector: #{$currentSelector +
+      '.' +
+      $B +
+      $element-separator +
+      $unit +
+      ','};
+  }
+
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}
+
+// m(vertical) --> .vou-divider__vertical
+@mixin m($modifier) {
+  $selector: &;
+  $currentSelector: '';
+  @each $unit in $modifier {
+    $currentSelector: #{$currentSelector +
+      '.' +
+      $B +
+      $element-separator +
+      $unit +
+      ','};
+    }
+}
+
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}
