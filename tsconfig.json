@@ -9,7 +9,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "types": ["vite/client", "element-plus/global"],
+    "types": ["vite/client", "element-plus/global", "unplugin-vue-define-options"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]

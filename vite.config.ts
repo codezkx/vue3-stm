@@ -10,7 +10,7 @@ const pathResolve = (dirPath) => path.resolve(__dirname, dirPath)
 export default ({ command }) => {
   const isBuild = command === 'build' // command = serve or build
   return defineConfig({
-    plugins: [vue(), ...createVitePlugins(isBuild), ElementPlus, defineOptions()],
+    plugins: [vue(), createVitePlugins({}, isBuild), ElementPlus, defineOptions()],
     resolve: {
       alias: [
         {

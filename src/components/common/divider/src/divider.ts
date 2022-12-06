@@ -2,7 +2,7 @@ import { ExtractPropTypes } from 'vue'
 import { buildProps } from '@/utils'
 
 
-export const props = buildProps({
+export const dividerProps = buildProps({
   direction: {
     type: String,
     value: ['horizontal', 'vertical'],
@@ -15,4 +15,4 @@ export const props = buildProps({
   },
 } as const)
 
-export type Props = ExtractPropTypes<typeof props>
+export type Props = ExtractPropTypes<typeof dividerProps>
