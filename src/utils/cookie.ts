@@ -62,6 +62,5 @@ export const clearCookie = (...arg: Array<string>) => {
       json[arg[k]] = null
     }
   }
-  console.log(arg, 'arg')
   setCookie(json, -1)
 }

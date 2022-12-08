@@ -57,6 +57,15 @@ export const useNamespace = (block: string) => {
     const state = args.length >= 1 ? args[0]! : true
     return name && state ? `${statePrefix}${name}` : ''
   }
+  const cssVar = (object: Record<string, string>) => {
+    const style: Record<string, string> = {}
+    for (const key in object) {
+      if (Object.hasOwn(object, key) && object[key]) {
+        style[`--${namespace.value}-${block}-${key}`] = object[key]
+      }
+    }
+    return style
+  }
   return {
     namespace,
     b,
@@ -67,6 +76,8 @@ export const useNamespace = (block: string) => {
     bm,
     bem,
     is,
+    // css
+    cssVar,
   }
 };
 export type UsenamespaceReturn = ReturnType<typeof useNamespace>

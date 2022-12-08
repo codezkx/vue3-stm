@@ -1,11 +1,8 @@
 import { App } from 'vue'
-import { Col } from '@/components/common/layout'
-import { Row } from '@/components/common/layout'
+// import { Col } from '@/components/common/layout'
+// import { Row } from '@/components/common/layout'
+import componentList from '@/components/common'
 
-const componentList = [
-    Col,
-    Row,
-]
 import { SFCWithInstall } from '@/utils/types'
 const componentPlugins = componentList.map(item => {
     const _component: SFCWithInstall<typeof item> = item as SFCWithInstall<typeof item>

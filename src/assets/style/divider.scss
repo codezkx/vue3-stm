@@ -8,7 +8,7 @@
     display: block;
     width: 100%;
     height: 1px;
-    padding: 20px 0;
+    margin: 20px 0;
     border-top: 1px #dcdfe6 solid;
   }
 
@@ -17,7 +17,7 @@
     display: inline-block;
     width: 1px;
     height: 1em;
-    padding: 0 8px;
+    margin: 0 8px;
     vertical-align: middle;
     border-right: 1px #dcdfe6 solid;
   }
@@ -26,22 +26,25 @@
     position: absolute;
     background-color: #FFF;
     padding: 0 20px;
-    font-weight: 500;
-    color: var(--el-text-color-primary)
-  }
+    font-style: {
+      weight: 500;
+      size: 14px;
+    }
+    color: var(--el-text-color-primary);
 
-  @include when(left) {
-    left: 20px;
-    transform: tranlateY(-50%);
-  }
+    @include when(left) {
+      left: 20px;
+      transform: translateY(-50%);
+    }
 
-  @include when(center) {
-    left: 50%;
-    transform: tranlateX(-50%) tranlateY(-50%); // 需要减去盒子的一半
-  }
+    @include when(center) {
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%); // 需要减去盒子的一半
+    }
 
-  @include when(right) {
-    right: 20px;
-    transform: tranlateY(-50%);
+    @include when(right) {
+      right: 20px;
+      transform: translateY(-50%);
+    }
   }
 }

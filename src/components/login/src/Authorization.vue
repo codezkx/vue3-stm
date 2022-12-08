@@ -41,7 +41,7 @@
         false-label="0">记住密码</el-checkbox>
       <span @click="resetPass" class="vou-reset-text">忘记密码?</span>
     </div>
-    <div class="justify-center pdB24">
+    <div class="justify-center">
       <el-button
         class="wh100"
         type="primary"
@@ -51,6 +51,9 @@
       </el-button>
     </div>
     <!-- 第三方账号登录 -->
+    <el-divider content-position="center">
+      or log in with:
+    </el-divider>
     <div class="flex">
       <el-button
         class="wh50"
@@ -61,9 +64,6 @@
       <el-button
         class="wh50"
         @click="resetForm(accountRef)">注册</el-button>
-    </div>
-    <div>
-
     </div>
   </div>
 </template>
@@ -105,7 +105,6 @@
       return cb(new Error('This field is required'))
     }
     const reg = /^[a-zA-Z]([0-9a-zA-Z]{3,11})$/
-    console.log(value)
     if (!reg.test(value)) {
       return cb(new Error('Please enter 3 to 11 characters'))
     }
@@ -140,7 +139,6 @@
   const getCookie = () => {
     // 先判断之前用户是否勾选记住密码
     const { cookieInfo } = useMultipleCookieStore(store)
-    console.log(cookieInfo, 'cookieInfo')
     if (cookieInfo) {
       rememberm.value = cookieInfo.rememberm
       accountForm.userName = cookieInfo.userName

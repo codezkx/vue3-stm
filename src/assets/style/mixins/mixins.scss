@@ -37,13 +37,18 @@
   $currentSelector: '';
   @each $unit in $modifier {
     $currentSelector: #{$currentSelector +
-      '.' +
-      $B +
-      $element-separator +
+      $selector +
+      $modifier-separator +
       $unit +
       ','};
+  }
+
+  @at-root {
+    #{$currentSelector} {
+      @content;
     }
-}
+  }
+};
 
 @mixin when($state) {
   @at-root {

@@ -1,6 +1,8 @@
 import { ExtractPropTypes } from 'vue'
-import { buildProps } from '@/utils'
+import { buildProps, definePropType } from '@/utils'
+import type { CSSProperties } from 'vue'
 
+export type BorderStyle = CSSStyleDeclaration['borderStyle']
 
 export const dividerProps = buildProps({
   direction: {
@@ -13,6 +15,10 @@ export const dividerProps = buildProps({
     value: ['left', 'center', 'right'],
     default: 'center',
   },
+  borderStyle: {
+    type: definePropType<BorderStyle>(String),
+    default: 'solid',
+  }
 } as const)
 
 export type Props = ExtractPropTypes<typeof dividerProps>

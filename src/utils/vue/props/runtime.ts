@@ -81,7 +81,7 @@ export const buildProps = <
     | EpPropInput<any, any, any, any, any>
   >
 >(
-  Props: Props
+  props: Props
 ): {
   [K in keyof Props]: IfEpProp<
     Props[K],

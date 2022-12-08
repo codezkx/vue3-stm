@@ -7,6 +7,4 @@ const install = (app: App): void => {
   })
 }
 
-
 export default install
-
